@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="extrato"
+            type="com.example.android.testesolutis.model.Extrato" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_8dp"
+        app:cardCornerRadius="@dimen/spacing_8dp"
+        app:cardElevation="@dimen/spacing_4dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtType"
+                    extratoType="@{extrato.valor}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spacing_4dp"
+                    android:layout_weight="1"
+                    app:layout_constraintEnd_toStartOf="@+id/txtDate"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="Pagamento" />
+
+                <TextView
+                    android:id="@+id/txtDate"
+                    dateMask="@{extrato.data}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textAlignment="textEnd"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="03/12/2055" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_4dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txtDesc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/spacing_4dp"
+                    android:layout_weight="1"
+                    android:text="@{extrato.descricao}"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    tools:text="Pagamento Conta Luz" />
+
+                <TextView
+                    android:id="@+id/txtValue"
+                    moneyMask="@{extrato.valor}"
+                    moneyMaskWithColor="@{extrato.valor}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.5"
+                    android:textAlignment="textEnd"
+                    android:textAppearance="?attr/textAppearanceHeadline6"
+                    tools:text="- R$ 1.566,00" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

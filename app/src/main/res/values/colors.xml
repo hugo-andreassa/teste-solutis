@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="backgroundLoginColor">#f5f6fa</color>
+    <color name="backgroundMainColor">#e1e1e1</color>
+    <color name="snackbarErrorColor">#ff3333</color>
+
+    <color name="primaryColor">#0175e4</color>
+    <color name="primaryLightColor">#62a3ff</color>
+    <color name="primaryDarkColor">#004bb1</color>
+    <color name="secondaryColor">#004bb1</color>
+    <color name="secondaryLightColor">#5676e4</color>
+    <color name="secondaryDarkColor">#002581</color>
+
+    <color name="white">#ffffff</color>
+
+    <color name="red">#ff3333</color>
+    <color name="green">#8BC34A</color>
+</resources>
