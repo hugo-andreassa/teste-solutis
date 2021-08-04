@@ -92,9 +92,13 @@ fun moneyMaskWithColor(txtView: TextView, it: Double?) {
 @BindingAdapter("dateMask")
 fun dateMask(txtView: TextView, it: String?) {
     it?.let {
-        val date = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(it)
-        val formatted = SimpleDateFormat("dd/MM/yyyy").format(date)
-        txtView.text = formatted
+        try {
+            val date = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").parse(it)
+            val formatted = SimpleDateFormat("dd/MM/yyyy").format(date!!)
+            txtView.text = formatted
+        } catch (e: Exception) {
+            txtView.text = txtView.context.getString(R.string.error_date)
+        }
     }
 }
 

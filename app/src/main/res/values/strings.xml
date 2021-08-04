@@ -15,6 +15,7 @@
     <string name="logout_button_description">Logout button</string>
     <string name="pagamento">Pagamento</string>
     <string name="recebimento">Recebimento</string>
+    <string name="error_date">Error parsing date</string>
 
 
 </resources>
