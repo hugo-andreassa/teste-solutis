@@ -3,7 +3,6 @@ package com.example.android.testesolutis.ui.login
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.android.testesolutis.R
 import com.example.android.testesolutis.databinding.ActivityLoginBinding

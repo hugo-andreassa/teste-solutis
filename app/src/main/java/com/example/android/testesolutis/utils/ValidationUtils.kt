@@ -41,12 +41,19 @@ fun isCPF(cpf: String): Boolean {
  * Source: https://stackoverflow.com/questions/1819142/how-should-i-validate-an-e-mail-address
  */
 fun isEmail(email: String): Boolean {
-    return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    return email.isNotEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()
 }
 
 fun isPassword(password: String): Boolean {
     // campo password deve validar se a senha tem pelo menos uma
     // letra maiuscula, um caracter especial e um caracter alfanumérico
 
-    return password.isNotEmpty()
+    // val upperCase = password.contains(Regex("[A-Z]"))
+    val upperCase = true
+    val specialCharacter = password.contains(Regex("[@#$%^/&+=]"))
+    val alphaNumeric = password.contains(Regex("[a-zA-Z0-9]"))
+
+    val result =  upperCase && specialCharacter && alphaNumeric
+
+    return password.isNotEmpty() && result
 }

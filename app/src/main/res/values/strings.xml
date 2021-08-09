@@ -16,6 +16,10 @@
     <string name="pagamento">Pagamento</string>
     <string name="recebimento">Recebimento</string>
     <string name="error_date">Error parsing date</string>
+    <string name="atencao">Atenção</string>
+    <string name="deseja_mesmo_sair">"Você tem certeza que deseja sair? "</string>
+    <string name="cancelar">Cancelar</string>
+    <string name="sair">Sair</string>
 
 
 </resources>

@@ -9,6 +9,7 @@ import com.example.android.testesolutis.databinding.ActivityMainBinding
 import com.example.android.testesolutis.db.getDatabase
 import com.example.android.testesolutis.ui.login.LoginActivity
 import com.example.android.testesolutis.ui.main.adapter.ExtratoListAdapater
+import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
@@ -47,6 +48,7 @@ class MainActivity : AppCompatActivity() {
         })
 
         setupRecyclerView()
+        setupSwipeRefresh()
         setupLogout()
     }
 
@@ -61,9 +63,30 @@ class MainActivity : AppCompatActivity() {
         })
     }
 
+    private fun setupSwipeRefresh() {
+        viewModel.refreshing.observe(this) {
+            it?.let {
+                binding.swipeRefresh.isRefreshing = it
+            }
+        }
+
+        binding.swipeRefresh.setOnRefreshListener {
+            viewModel.refreshExtrato()
+        }
+    }
+
     private fun setupLogout() {
         binding.logoutButton.setOnClickListener {
-            viewModel.logout()
+            MaterialAlertDialogBuilder(this)
+                .setTitle(R.string.atencao)
+                .setMessage(R.string.deseja_mesmo_sair)
+                .setPositiveButton(R.string.sair) { _, _ ->
+                    viewModel.logout()
+                }
+                .setNeutralButton(R.string.cancelar) { _, _ ->
+                    // TODO:
+                }
+                .show()
         }
 
         viewModel.navigateToLoginActivity.observe(this, {

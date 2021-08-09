@@ -12,6 +12,7 @@ const val TAG = "LoginViewModel"
 class MainViewModel(private val database: SolutisDatabase) : ViewModel() {
 
     private val _loading = MutableLiveData<Boolean>()
+    private val _refreshing = MutableLiveData<Boolean>()
     private val _errorMessage = MutableLiveData<String?>()
     private val _user = MutableLiveData<User>()
     private val _extrato = MutableLiveData<List<Extrato>>()
@@ -19,6 +20,8 @@ class MainViewModel(private val database: SolutisDatabase) : ViewModel() {
 
     val loading: LiveData<Boolean>
         get() = _loading
+    val refreshing: LiveData<Boolean>
+        get() = _refreshing
     val errorMessage: LiveData<String?>
         get() = _errorMessage
     val user: LiveData<User>
@@ -34,6 +37,15 @@ class MainViewModel(private val database: SolutisDatabase) : ViewModel() {
             val user = loadUser()
             loadExtrato(user)
             _loading.value = false
+        }
+    }
+
+    fun refreshExtrato() {
+        _refreshing.value = true
+        viewModelScope.launch {
+            val user = database.userDao.getLoggedUser()
+            loadExtrato(user)
+            _refreshing.value = false
         }
     }
 
