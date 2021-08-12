@@ -41,7 +41,6 @@ class LoginViewModel(private val database: SolutisDatabase) : ViewModel() {
                 val login = Login(user, password)
                 val response = SolutisApi.service.login(login)
                 if (response.isSuccessful) {
-
                     saveUserData(response.body()!!)
                     saveLoginData(login)
 

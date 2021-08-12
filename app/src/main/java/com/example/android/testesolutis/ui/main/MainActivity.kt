@@ -32,21 +32,7 @@ class MainActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-        viewModel.errorMessage.observe(this, {
-            it?.let {
-                Snackbar
-                    .make(
-                        findViewById(android.R.id.content),
-                        it,
-                        Snackbar.LENGTH_LONG
-                    )
-                    .setBackgroundTint(getColor(R.color.snackbarErrorColor))
-                    .show()
-
-                viewModel.doneShowingError()
-            }
-        })
-
+        setupErrorMessage()
         setupRecyclerView()
         setupSwipeRefresh()
         setupLogout()
@@ -59,6 +45,23 @@ class MainActivity : AppCompatActivity() {
         viewModel.extrato.observe(this, {
             it?.let {
                 adapter.submitList(it)
+            }
+        })
+    }
+
+    private fun setupErrorMessage() {
+        viewModel.errorMessage.observe(this, {
+            it?.let {
+                Snackbar
+                    .make(
+                        findViewById(android.R.id.content),
+                        it,
+                        Snackbar.LENGTH_LONG
+                    )
+                    .setBackgroundTint(getColor(R.color.snackbarErrorColor))
+                    .show()
+
+                viewModel.doneShowingError()
             }
         })
     }

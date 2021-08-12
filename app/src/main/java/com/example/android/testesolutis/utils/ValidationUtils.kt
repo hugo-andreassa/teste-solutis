@@ -1,6 +1,5 @@
 package com.example.android.testesolutis.utils
 
-import android.text.TextUtils
 import android.util.Patterns
 
 /**
